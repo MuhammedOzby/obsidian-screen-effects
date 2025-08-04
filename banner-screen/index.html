@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OBS Komple Ekran</title>
+    <style>
+      /* === TEMEL SAYFA AYARLARI === */
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: transparent;
+        overflow: hidden; /* Kaydırma çubukları olmasın */
+        font-family: "Trebuchet MS", Arial, sans-serif;
+      }
+      iframe.body {
+        width: 100%;
+        height: 100%;
+        border: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      /* === YOUTUBE SOHBET KUTUSU STİLLERİ === */
+      #chat-container {
+        position: absolute;
+        top: 10px; /* Üstten boşluk */
+        right: 10px; /* Sağdan boşluk */
+        width: 350px; /* Sohbet kutusunun genişliği */
+        /* Yükseklik: Ekran yüksekliğinden alt bar (60px) ve boşlukları (20px) çıkar */
+        height: calc(100vh - 80px);
+      }
+
+      #chat-container iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 8px; /* Kenarları hafif yuvarlak yapabilirsin */
+      }
+
+      /* === HABER BANDI STİLLERİ === */
+      #news-bar {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: rgba(204, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        color: white;
+        box-sizing: border-box; /* Kenarlık ve padding genişliği etkilemesin */
+      }
+
+      #news-label {
+        background-color: #ffffff;
+        color: #cc0000;
+        font-weight: bold;
+        font-size: 22px;
+        padding: 0 25px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+      }
+
+      #ticker-wrap {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+      }
+
+      #ticker-text {
+        position: absolute;
+        height: 100%;
+        margin: 0;
+        padding-left: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        white-space: nowrap;
+        animation: scroll-left 40s linear infinite;
+      }
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-110%);
+        } /* Yazının tamamen kaybolması için -100%'den biraz fazla */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat-container">
+      <iframe
+        style="background-color: transparent !important"
+        src="https://www.youtube.com/live_chat?v=G9H8keQk7C0&embed_domain=localhost"
+      ></iframe>
+    </div>
+
+    <div id="news-bar">
+      <div id="news-label">SON DAKİKA</div>
+
+      <div id="ticker-wrap">
+        <p id="ticker-text">
+          Şiirler uçar gider, rüzgarla savrulur, Her dize bir nefes, kalplere
+          dokunur. &nbsp; &nbsp; &nbsp; --- &nbsp; &nbsp; &nbsp; Gecenin
+          sessizliği, yıldızlar parıldar, Sözcükler dans eder, ruhlara fısıldar.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
